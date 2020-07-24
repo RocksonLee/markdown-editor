@@ -126,7 +126,7 @@ document.onmouseup=function(e){
 }
 
 async function setCodeTheme(str){
-    fetch('/code-themes/'+str+'.json')
+    fetch('code-themes/'+str+'.json')
         .then(data=>data.json())
         .then(data=>{
             monaco.editor.defineTheme('monokai',data);
