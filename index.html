@@ -25,7 +25,24 @@
     </div>
 </div>
 <div id='drawer'>
-    <button id='drawer_toggle'>↔</button>
+    <button id='drawer_toggle'>⇋</button>
+    <div id='drawer_content'>
+        <h2>Setting</h2>
+        <p>
+            <label for="autorender">auto render</label>
+            <input type="checkbox" id="autorrender" value="first_checkbox" checked onchange="autogen^=1">
+        </p>
+        <p>
+            <label for="code_theme">code theme</label>
+            <select id='code_theme'>
+                <option value="vs" selected>vs</option>
+            </select>
+        </p>
+        <p>
+            <lable for="md_theme">markdown css</lable>            
+            <select id='md_theme'></select>
+        </p>
+    </div>
 </div>
 <script src="bundle.js"></script>
 </body>

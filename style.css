@@ -21,20 +21,31 @@ body{margin:0;}
     top:0;bottom:0;right:0;
     height:100%;
     border:none;
-    background:#66ccff;
-    color:#fff;
-    font-weight:bold;
+    outline:none;
     font-size: 17px;
     padding: 2px;
     cursor:move;
     z-index:99999;
     opacity:0.1;
 }
-#slide:hover{
-    opacity:0.8;
+#slide:hover{opacity:0.8;}
+#drawer{
+    position: fixed;
+    right:0;top:0;
+    height:100%;
+    width:fit-content;
+    background-color: #fff;
+}
+#drawer_toggle{
+    opacity: 0.1;
+    position: absolute;
+    bottom:0;top:0;left:-20px;
+    margin:auto;
     border:none;
     outline:none;
 }
+#drawer_toggle:hover{opacity:0.8;}
+#drawer_content{padding-left:10px;padding-right:10px;}
 /* #markdown::-webkit-scrollbar{width:0;} */
 /* 滚动槽 */
 ::-webkit-scrollbar{
