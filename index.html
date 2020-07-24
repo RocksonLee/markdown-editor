@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>zcmimi's editor</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+    
+    <link id="md-theme" rel="stylesheet" href="md-themes/github.css" type="text/css">
+
+    <link id="md-code-theme" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.20.0/min/vs/loader.js"></script>
+</head>
+<div id="code">
+    <button id='slide'>↔</button>
+</div>
+<div id="render">
+    <div id='markdown' class="md-body">
+        <img src="loading.svg">
+    </div>
+</div>
+<div id='drawer'>
+    <button id='drawer_toggle'>↔</button>
+</div>
+<script src="bundle.js"></script>
+</body>
+</html>
