@@ -11,7 +11,8 @@ html{overflow:hidden;}
 }
 #markdown{
     position:absolute;
-    top:0;bottom:0;left:10px;right:0;
+    top:0;bottom:0;left:0;right:0;
+    padding-left:10px;
     overflow:scroll;
 }
 #slide{
