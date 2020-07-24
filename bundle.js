@@ -82,8 +82,7 @@ function gen(){
     changed=0;
 }
 function watch(){
-    if(!autogen)return;
-    if(changed)try{gen();}catch(e){console.log(e);}
+    if(changed&&autogen)try{gen();}catch(e){console.log(e);}
     setTimeout(watch,wait);
 }
 require.config({paths:{'vs':'https://cdn.jsdelivr.net/npm/monaco-editor@0.20.0/min/vs'}});
