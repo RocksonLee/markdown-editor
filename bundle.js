@@ -153,7 +153,7 @@ function get_hl_theme(){
     var hl_theme=document.getElementById("hl_theme");
     for(i in hl_theme_list){
         var x=document.createElement("option");
-        x.value="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/"+md_theme_list[i];
+        x.value="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/"+hl_theme_list[i];
         x.innerText=i;
         if(i=="github")x.selected=1;
         hl_theme.append(x);
