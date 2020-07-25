@@ -3,7 +3,7 @@ var code=document.getElementById("code"),
     slide=document.getElementById("slide");
 code.style.height=render.style.height=window.innerHeight+'px';
 var editor,md=document.getElementById('markdown');
-var changed=0,wait=200,autogen=1;
+var changed=0,AutoGenWait=200,AutoGen=1;
 function gen(){
     var inline_math=/\$([\s\S]+?)\$(?!\])/g,
         block_math=/\$\$([\s\S]+?)\$\$(?!\])/g;
@@ -16,8 +16,8 @@ function gen(){
     changed=0;
 }
 function watch(){
-    if(changed&&autogen)try{gen();}catch(e){console.log(e);}
-    setTimeout(watch,wait);
+    if(changed&&AutoGen)try{gen();}catch(e){console.log(e);}
+    setTimeout(watch,AutoGenWait);
 }
 require.config({paths:{'vs':'https://cdn.jsdelivr.net/npm/monaco-editor@0.20.0/min/vs'}});
 require(['vs/editor/editor.main'],function(){
@@ -28,7 +28,8 @@ require(['vs/editor/editor.main'],function(){
         automaticLayout: true
 	});
     editor.onDidChangeModelContent(function(e){changed=1;});
-    editor.setValue("## Markdown Editor by zcmimi");
+    if(getCookie('last modify'))editor.setValue(getCookie('last modify'));
+    else editor.setValue("## Markdown Editor by zcmimi");
 
     get_code_theme();
 });
@@ -95,3 +96,26 @@ function get_hl_theme(){
     hl_theme.onchange=function(){document.getElementById("hl-theme").href=this.value;};
 }
 get_hl_theme();
+
+function getCookie(cname){
+    var name=cname+"=",decodedCookie=decodeURIComponent(document.cookie),ca=decodedCookie.split(';'),c;
+    for(i in ca){
+        c=ca[i];
+        while(c.charAt(0)==' ')c=c.substring(1);
+        if(c.indexOf(name)==0)return c.substring(name.length, c.length);
+    }return "";
+}
+function setCookie(cname,cval,exdays=0.5){
+    if(getCookie(cname)==cval)return;
+    var d=new Date();
+    d.setTime(d.getTime()+(exdays*24*60*60*1000));
+    var expires="expires="+d.toUTCString();
+    document.cookie=cname+"="+cval+";"+expires+";path=/";
+}
+var AutoSave=1,AutoSaveWait=20;
+function save(){setCookie('last modify',editor.getValue(),5);}
+function auto_save(){
+    if(AutoSave)try{save();}catch{}
+    setTimeout(auto_save,AutoSaveWait*1000);
+}
+auto_save();

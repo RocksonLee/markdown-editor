@@ -30,7 +30,8 @@
         <h2>Setting</h2>
         <p>
             <label for="autorender">auto render</label>
-            <input type="checkbox" id="autorrender" value="first_checkbox" checked onchange="autogen^=1">
+            <input type="number" id="autorrender_wait" value="200" title="auto render waiting time" onchange="AutoGenWait=this.value">ms
+            <input type="checkbox" id="autorender" checked onchange="AutoGen^=1">
         </p>
         <p>
             <label for="code_theme">code theme</label>
@@ -46,9 +47,14 @@
             <lable for="hl_theme">highlight theme</lable>
             <select id='hl_theme'></select>
         </p>
+        <hr>
+        <p>
+            <label for="autosave">auto save</label>
+            <input type="number" id="autosave_save" value="20" title="auto render waiting time" onchange="AutoSaveWait=this.value">s
+            <input type="checkbox" id="autosave" checked onchange="AutoSave^=1">
+        </p>
     </div>
 </div>
 <script src="bundle.js"></script>
-<script src="sync-scroll.js" type="module"></script>
 </body>
 </html>
