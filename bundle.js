@@ -28,8 +28,8 @@ require(['vs/editor/editor.main'],function(){
         automaticLayout: true
 	});
     editor.onDidChangeModelContent(function(e){changed=1;});
-    if(getCookie('last modify'))editor.setValue(getCookie('last modify'));
-    else editor.setValue("## Markdown Editor by zcmimi");
+    try{editor.setValue(atob(localStorage.getItem('last_modify')));}
+    catch{editor.setValue(atob("Markdown Editor By zcmimi"));}
 
     get_code_theme();
 });
@@ -113,7 +113,7 @@ function setCookie(cname,cval,exdays=0.5){
     document.cookie=cname+"="+cval+";"+expires+";path=/";
 }
 var AutoSave=1,AutoSaveWait=20;
-function save(){setCookie('last modify',editor.getValue(),5);}
+function save(){localStorage.setItem('last_modify',btoa(editor.getValue()));}
 function auto_save(){
     if(AutoSave)try{save();}catch{}
     setTimeout(auto_save,AutoSaveWait*1000);
